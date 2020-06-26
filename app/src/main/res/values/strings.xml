@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">SWFGame</string>
+    <string name="email_text">Email</string>
+    <string name="password_text">Password</string>
+    <string name="password_confirmText">Confirm Password</string>
+    <string name="login_text">LOGIN</string>
+    <string name="register_text"><u>Register</u></string>
+    <string name="firstname_text">Firstname</string>
+    <string name="lastname_text">Lastname</string>
+    <string name="address_title">ADDRESS</string>
+    <string name="birth_text">Day of Birth:</string>
+    <string name="country_text">Country:</string>
+    <string name="city_text">City</string>
+    <string name="streetname_text">Street name</string>
+    <string name="zipcode_text">Zip code</string>
+    <string name="housenumber_text">House number</string>
+    <string name="complement_text">Complement (optional)</string>
+    <string name="hascar_text">Have car</string>
+    <string name="hasbike_text">Have bike</string>
+    <string name="registerbutton_text">Register</string>
+</resources>
