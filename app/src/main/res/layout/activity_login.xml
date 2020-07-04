@@ -16,8 +16,8 @@
             android:id="@+id/logo_imageView"
             android:layout_width="match_parent"
             android:layout_height="226dp"
-            app:srcCompat="@drawable/swf_logo"
-            android:contentDescription="TODO" />
+            android:contentDescription="TODO"
+            app:srcCompat="@drawable/swf_logo" />
 
         <EditText
             android:id="@+id/email_text"

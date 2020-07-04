@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/home_logo"
+        android:title="@string/bottom_navigation_menu_home"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_challenges"
+        android:enabled="true"
+        android:icon="@drawable/challenge_logo"
+        android:title="@string/bottom_navigation_menu_challenges"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_events"
+        android:enabled="true"
+        android:icon="@drawable/event_logo"
+        android:title="@string/bottom_navigation_menu_events"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_advices"
+        android:enabled="true"
+        android:icon="@drawable/advice_logo"
+        android:title="@string/bottom_navigation_menu_advises"
+        app:showAsAction="ifRoom" />
+</menu>

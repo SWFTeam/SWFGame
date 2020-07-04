@@ -5,35 +5,25 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
+class Advices : AppCompatActivity() {
 
-    lateinit var token: String
     lateinit var bottomNav: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_advices)
 
-        getSupportActionBar()?.setTitle("SWFGame - Home")
-        /*Commented to work on bottom menu
-        if(intent.getStringExtra("token").isNullOrEmpty()){
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-        } else {
-            var token = intent.getStringExtra("token")
-            println("Token received : " + token)
-
-            this.token = token
-
-            println("Token received : " + this.token)
-        }*/
+        getSupportActionBar()?.setTitle("SWFGame - Advices")
 
         this.bottomNav = findViewById(R.id.activity_main_bottom_navigation)
-        bottomNav.selectedItemId = R.id.action_home
+        bottomNav.selectedItemId = R.id.action_advices
+
         bottomNav.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.action_home -> {
                     println("Clicked on home")
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.action_challenges -> {
@@ -50,14 +40,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.action_advices -> {
                     println("Clicked on advices")
-                    val intent = Intent(this, Advices::class.java)
-                    startActivity(intent)
                     true
                 }
                 else -> false
             }
         }
-
-
     }
 }
