@@ -32,6 +32,8 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+        getSupportActionBar()?.setTitle("SWFGame - Register")
+
         this.firstnameEditText = findViewById<EditText>(R.id.firstname_editText)
         this.lastnameEditText = findViewById<EditText>(R.id.lastname_editText)
         this.emailEditText = findViewById<EditText>(R.id.email_editText)

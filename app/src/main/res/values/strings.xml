@@ -18,10 +18,25 @@
     <string name="hascar_text">Have car</string>
     <string name="hasbike_text">Have bike</string>
     <string name="registerbutton_text">Register</string>
+    <string name="title_text">Title</string>
+    <string name="description_text">Description</string>
+    <string name="gotit_text">Got it !</string>
+    <string name="complete_text">Completed</string>
+    <string name="event_localisation">Localisation</string>
+    <string name="event_description">Description : </string>
+    <string name="letsgo_text">Let\'s go !</string>
+    <string name="dateStart_text">Date start</string>
+    <string name="dateEnd_text">Date end</string>
+    <string name="username">Username</string>
+    <string name="level">Level 1</string>
 
     <!-- BOTTOM NAVIGATION VIEW -->
     <string name="bottom_navigation_menu_home">Home</string>
     <string name="bottom_navigation_menu_challenges">Challenges</string>
     <string name="bottom_navigation_menu_events">Events</string>
     <string name="bottom_navigation_menu_advises">Advices</string>
+
+    <string name="list_challenge_title">Challenges list:</string>
+    <string name="list_event_title">Events list:</string>
+    <string name="list_advice_title">Advices list:</string>
 </resources>

@@ -23,6 +23,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        getSupportActionBar()?.setTitle("SWFGame - Login")
+
         var emailTextView = findViewById<EditText>(R.id.email_text)
         var passwordTextView = findViewById<EditText>(R.id.password_text)
         var registerTextView = findViewById<TextView>(R.id.register_textview)
@@ -59,6 +61,7 @@ class LoginActivity : AppCompatActivity() {
                     var intent = Intent(applicationContext, MainActivity::class.java)
                     //println("ICI    " + response.body()?.string())
                     intent.putExtra("token", token)
+                    intent.putExtra("email", email)
                     startActivity(intent)
                 } else {
                     Toast.makeText(this@LoginActivity, "Login failed!", Toast.LENGTH_SHORT).show()
@@ -77,6 +80,22 @@ interface ApiInterface {
     @Headers("Content-Type:application/json")
     @POST("signup")
     fun signup(@Body info: TEST): retrofit2.Call<ResponseBody>
+
+    @Headers("Content-Type:application/json")
+    @GET("bo/advices")
+    fun getAllAdvices(@Header("Authorization") token: String): retrofit2.Call<Array<Advice>>
+
+    @Headers("Content-Type:application/json")
+    @GET("bo/challenges")
+    fun getAllChallenges(@Header("Authorization") token: String): retrofit2.Call<Array<Challenge>>
+
+    @Headers("Content-Type:application/json")
+    @GET("bo/events")
+    fun getAllEvents(@Header("Authorization") token: String): retrofit2.Call<Array<Event>>
+
+    @Headers("Content-Type:application/json")
+    @POST("bo/user")
+    fun getUserByMail(@Header("Authorization") token: String, @Body info: GetUserBody): retrofit2.Call<User>
 
 }
 class RetrofitInstance {
@@ -108,8 +127,8 @@ data class SignInBody(val email: String, val password: String)
 
 data class SignUpBody(val firstname: String, val lastname: String, val email_address: String, val password: String, val birthday: String, val address: Address, val address_work: Address)
 
-data class Address(val country: String, val city: String, val street: String, val zip_code: Int, val nb_house: Int, val complement: String)
-
 data class Needs(val hasCar: Boolean, val hasBike: Boolean)
 
 data class TEST(val user: SignUpBody, val needs: Needs)
+
+data class GetUserBody(val email: String)
