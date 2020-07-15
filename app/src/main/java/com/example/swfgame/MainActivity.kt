@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         /*Commented to work on bottom menu*/
         if(intent.getStringExtra("token").isNullOrEmpty()){
             val intent = Intent(this, LoginActivity::class.java)
+            this.finish()
             startActivity(intent)
         } else {
             this.token = intent.getStringExtra("token")
