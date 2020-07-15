@@ -6,200 +6,429 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
 
-    <LinearLayout
-        android:id="@+id/mainUser_layout"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/register_textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/register_text"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="#000000"
-            android:textSize="14sp" />
-
-        <EditText
-            android:id="@+id/firstname_editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/firstname_text"
-            android:inputType="textPersonName"
-            android:autofillHints="" />
-
-        <EditText
-            android:id="@+id/lastname_editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/lastname_text"
-            android:inputType="textPersonName"
-            android:autofillHints="" />
-
-        <EditText
-            android:id="@+id/email_editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/email_text"
-            android:inputType="textEmailAddress"
-            android:autofillHints="" />
-
-        <EditText
-            android:id="@+id/password_editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/password_text"
-            android:inputType="textPassword"
-            android:autofillHints="" />
-
-        <EditText
-            android:id="@+id/confirm_editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/password_confirmText"
-            android:inputType="textPassword"
-            android:autofillHints="" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
-            android:id="@+id/birthday_layout"
+            android:id="@+id/mainUser_layout"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
 
             <TextView
-                android:id="@+id/birth_textView"
-                android:layout_width="0dp"
+                android:id="@+id/register_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/match_buttons"
+                android:text="@string/register_text"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/firstname"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/birth_text" />
+                android:layout_marginBottom="@dimen/match_buttons"
+                android:orientation="vertical">
 
-            <DatePicker
-                android:id="@+id/birth_datePicker"
-                android:layout_width="wrap_content"
-                android:layout_height="85dp"
-                android:calendarViewShown="false"
-                android:datePickerMode="spinner" />
+                <TextView
+                    android:id="@+id/firstname_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/match_label"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/firstname_text"
+                    android:textColor="@color/common_google_signin_btn_text_dark_focused" />
 
-        </LinearLayout>
+                <EditText
+                    android:id="@+id/firstname_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:background="@drawable/rounded_edittext"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:padding="@dimen/input_padding" />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/address_"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/address_title"
-            android:textAlignment="center"
-            android:textColor="#000000" />
+            <LinearLayout
+                android:id="@+id/lastname"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/match_buttons"
+                android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/country_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/lastname_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/match_label"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/lastname_text"
+                    android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+                <EditText
+                    android:id="@+id/lastname_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:background="@drawable/rounded_edittext"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:padding="@dimen/input_padding" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/match_buttons"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/email_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/match_label"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/email_text"
+                    android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+                <EditText
+                    android:id="@+id/email_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:background="@drawable/rounded_edittext"
+                    android:ems="10"
+                    android:inputType="textEmailAddress"
+                    android:padding="@dimen/input_padding" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/match_buttons"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/password_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/match_label"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/password_text"
+                    android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+                <EditText
+                    android:id="@+id/password_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:background="@drawable/rounded_edittext"
+                    android:ems="10"
+                    android:inputType="textPassword"
+                    android:padding="@dimen/input_padding" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/confirm"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/match_buttons"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/confirm_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/match_label"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/password_confirmText"
+                    android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+                <EditText
+                    android:id="@+id/confirm_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:background="@drawable/rounded_edittext"
+                    android:ems="10"
+                    android:inputType="textPassword"
+                    android:padding="@dimen/input_padding" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/birth"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/match_buttons"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/birth_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/match_label"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/birth_text"
+                    android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+                <DatePicker
+                    android:id="@+id/birth_datePicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:calendarViewShown="false"
+                    android:datePickerMode="spinner" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/country_textView"
-                android:layout_width="0dp"
+                android:id="@+id/address_"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingLeft="4dp"
-                android:text="@string/country_text"
-                tools:text="@string/country_text" />
+                android:layout_margin="@dimen/match_buttons"
+                android:text="@string/address_title"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-            <Spinner
-                android:id="@+id/country_spinner"
-                android:layout_width="330dp"
+            <LinearLayout
+                android:id="@+id/country"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/match_buttons"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/country_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/match_label"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/country_text"
+                    android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+                <Spinner
+                    android:id="@+id/country_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_edittext"
+                    android:padding="@dimen/input_padding"
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/city"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/match_buttons"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/city_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/match_label"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/city_text"
+                    android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+                <EditText
+                    android:id="@+id/city_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:background="@drawable/rounded_edittext"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:padding="@dimen/input_padding"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/street"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/match_buttons"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/street_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/match_label"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/streetname_text"
+                    android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+                <EditText
+                    android:id="@+id/street_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:background="@drawable/rounded_edittext"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:padding="@dimen/input_padding" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/zipcode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/match_buttons"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/zipcode_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/match_label"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/zipcode_text"
+                    android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+                <EditText
+                    android:id="@+id/zipcode_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:background="@drawable/rounded_edittext"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:padding="@dimen/input_padding" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/housenumber"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/match_buttons"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/housenumber_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/match_label"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/housenumber_text"
+                    android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+                <EditText
+                    android:id="@+id/housenumber_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:background="@drawable/rounded_edittext"
+                    android:ems="10"
+                    android:inputType="numberSigned"
+                    android:padding="@dimen/input_padding" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/complement"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/match_buttons"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/complement_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/match_label"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/complement_text"
+                    android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+                <EditText
+                    android:id="@+id/complement_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints=""
+                    android:background="@drawable/rounded_edittext"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:padding="@dimen/input_padding" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/needs"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/match_buttons"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/needs_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/match_label"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Needs"
+                    android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
+                <LinearLayout
+                    android:id="@+id/needs_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/hascar_checkBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hascar_text" />
+
+                    <CheckBox
+                        android:id="@+id/hasbike_checkBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/hasbike_text" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/button"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:textAlignment="center" />
+                android:layout_marginBottom="@dimen/match_buttons"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/register_button"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_edittext"
+                    android:padding="@dimen/input_padding"
+                    android:text="@string/registerbutton_text"
+                    android:textColor="@android:color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
         </LinearLayout>
-
-        <EditText
-            android:id="@+id/city_editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/city_text"
-            android:inputType="textPersonName"
-            android:autofillHints="" />
-
-        <EditText
-            android:id="@+id/street_editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/streetname_text"
-            android:inputType="textPersonName"
-            android:autofillHints="" />
-
-        <EditText
-            android:id="@+id/zipcode_editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/zipcode_text"
-            android:inputType="textPersonName"
-            android:autofillHints="" />
-
-        <EditText
-            android:id="@+id/housenumber_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/housenumber_text"
-            android:inputType="numberSigned"
-            android:autofillHints="" />
-
-        <EditText
-            android:id="@+id/complement_editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/complement_text"
-            android:inputType="textPersonName"
-            android:autofillHints="" />
-
-        <LinearLayout
-            android:id="@+id/needs_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <CheckBox
-                android:id="@+id/hascar_checkBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/hascar_text" />
-
-            <CheckBox
-                android:id="@+id/hasbike_checkBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/hasbike_text" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/register_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/registerbutton_text" />
-        </LinearLayout>
-
-    </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

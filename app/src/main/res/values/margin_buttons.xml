@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="match_buttons">24dp</dimen>
+    <dimen name="match_label">14dp</dimen>
+    <dimen name="input_padding">10dp</dimen>
+</resources>
