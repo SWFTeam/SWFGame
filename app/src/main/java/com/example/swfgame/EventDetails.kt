@@ -3,6 +3,7 @@ package com.example.swfgame
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +20,7 @@ class EventDetails : AppCompatActivity() {
     lateinit var letsgo_textView: TextView
     lateinit var dateStart_textView: TextView
     lateinit var dateEnd_textView: TextView
+    lateinit var participate_button: Button
     lateinit var token: String
     lateinit var email: String
 
@@ -84,6 +86,7 @@ class EventDetails : AppCompatActivity() {
         var complement = intent.getStringExtra("complement")
         var date_start = intent.getStringExtra("date_start")
         var date_end = intent.getStringExtra("date_end")
+        var experience = intent.getStringExtra("experience")
 
         this.full_address = nb_house.toString() + " " + street + ", " + zip_code + " " + city
 
@@ -111,6 +114,11 @@ class EventDetails : AppCompatActivity() {
 
         this.dateEnd_textView = findViewById(R.id.dateEnd_textView)
         this.dateEnd_textView.text = "End date : " + date_end.subSequence(0, 10)
+
+        this.participate_button = findViewById(R.id.participate_button)
+        this.participate_button.setOnClickListener {
+            //Participate action
+        }
 
     }
 

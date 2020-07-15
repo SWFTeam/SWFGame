@@ -1,6 +1,7 @@
 package com.example.swfgame
 
 import android.content.Intent
+import android.graphics.Color
 import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -126,8 +127,12 @@ class ChallengeDetails : AppCompatActivity() {
                     if (completedIds != null) {
                         completedIds.forEach {
                             if(it.toString() == challId){
+                                complete_button.setBackgroundColor(Color.BLACK)
+                                complete_button.setOnClickListener {
+
+                                }
                                 complete_button.text = "Already completed"
-                                complete_button.setEnabled(false)
+                                //complete_button.setEnabled(false)
                                 back_button = findViewById(R.id.back_button)
                                 back_button.setOnClickListener {
                                     finish()

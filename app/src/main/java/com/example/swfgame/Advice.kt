@@ -7,9 +7,9 @@ class Advice {
     @SerializedName("id")
     private var id: Int? = null
     @SerializedName("descriptions")
-    private var descriptions: List<List<Description>>? = null
+    private var descriptions: List<Description>? = null
 
-    constructor(id: Int, descriptions: List<List<Description>>){
+    constructor(id: Int, descriptions: List<Description>){
         this.id = id
         this.descriptions = descriptions
     }
@@ -21,10 +21,10 @@ class Advice {
         this.id = id
     }
 
-    fun getDescriptions(): List<List<Description>>? {
+    fun getDescriptions(): List<Description>? {
         return descriptions
     }
-    fun setDescriptions(descriptions: List<List<Description>>){
+    fun setDescriptions(descriptions: List<Description>){
         this.descriptions = descriptions
     }
 }

@@ -90,15 +90,15 @@ class Advices : AppCompatActivity() {
 
             private fun onClickItem(view: View, advice: Advice){
 
-                println("Clicked on " + advice.getDescriptions()?.get(0)?.get(0)?.getDescription())
+                println("Clicked on " + advice.getDescriptions()?.get(0)?.getDescription())
                 var intent = Intent(applicationContext, AdviceDetails::class.java)
-                intent.putExtra("id", advice.getDescriptions()?.get(0)?.get(0)?.getId())
-                intent.putExtra("country_code", advice.getDescriptions()?.get(0)?.get(0)?.getCountryCode())
-                intent.putExtra("title", advice.getDescriptions()?.get(0)?.get(0)?.getTitle())
-                intent.putExtra("name", advice.getDescriptions()?.get(0)?.get(0)?.getName())
-                intent.putExtra("description", advice.getDescriptions()?.get(0)?.get(0)?.getDescription())
-                intent.putExtra("type", advice.getDescriptions()?.get(0)?.get(0)?.getType())
-                intent.putExtra("foreign_id", advice.getDescriptions()?.get(0)?.get(0)?.getForeignId())
+                intent.putExtra("id", advice.getDescriptions()?.get(0)?.getId())
+                intent.putExtra("country_code", advice.getDescriptions()?.get(0)?.getCountryCode())
+                intent.putExtra("title", advice.getDescriptions()?.get(0)?.getTitle())
+                intent.putExtra("name", advice.getDescriptions()?.get(0)?.getName())
+                intent.putExtra("description", advice.getDescriptions()?.get(0)?.getDescription())
+                intent.putExtra("type", advice.getDescriptions()?.get(0)?.getType())
+                intent.putExtra("foreign_id", advice.getDescriptions()?.get(0)?.getForeignId())
                 intent.putExtra("token", token)
                 intent.putExtra("email", email)
                 startActivity(intent)
@@ -107,10 +107,7 @@ class Advices : AppCompatActivity() {
             override fun onResponse(call: Call<Array<Advice>>, response: Response<Array<Advice>>) {
                 if (response.code() == 200) {
                     items = response.body()!!
-                    println("HERE " + items?.get(0)?.getDescriptions()?.get(0)?.get(0)?.getDescription())
                     recyclerView = findViewById(R.id.list_recycler_view)
-
-                    println("WESH   " + items[0].getDescriptions()?.get(0)?.get(0)?.getDescription())
 
                     adapter = MyRecyclerAdapter(items, this::onClickItem)
                     manager = LinearLayoutManager(this@Advices)

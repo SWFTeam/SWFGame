@@ -10,7 +10,8 @@
         android:id="@+id/mainUser_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="20dp">
 
         <TextView
             android:id="@+id/titleChallenge_textView"
@@ -46,9 +47,18 @@
 
         <Button
             android:id="@+id/complete_button"
+            style="@style/Widget.MaterialComponents.Button.Icon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/complete_text" />
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_edittext"
+            android:fontFamily="@font/roboto_medium"
+            android:padding="@dimen/input_padding"
+            android:text="@string/complete_text"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/back_button"

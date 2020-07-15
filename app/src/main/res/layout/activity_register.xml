@@ -256,7 +256,7 @@
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:padding="@dimen/input_padding"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="@android:color/black" />
             </LinearLayout>
 
             <LinearLayout

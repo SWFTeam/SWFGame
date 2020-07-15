@@ -27,8 +27,8 @@ class MyRecyclerAdapter(private val dataset: Array<Advice>, private val onClickL
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.itemView.title_advice.text = this.dataset[position].getDescriptions()?.get(0)?.get(0)?.getTitle().toString()
-        holder.itemView.content_textView.text = this.dataset[position].getDescriptions()?.get(0)?.get(0)?.getDescription().toString()
+        holder.itemView.title_advice.text = this.dataset[position].getDescriptions()?.get(0)?.getTitle().toString()
+        holder.itemView.content_textView.text = this.dataset[position].getDescriptions()?.get(0)?.getDescription().toString()
         holder.itemView.setOnClickListener{
             if (onClickListener != null) {
                 onClickListener.invoke(it, dataset[position])

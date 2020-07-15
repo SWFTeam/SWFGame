@@ -13,14 +13,17 @@ class Event {
     @SerializedName("date_end")
     private var date_end: String? = null
     @SerializedName("descriptions")
-    private var descriptions: List<List<Description>>? = null
+    private var descriptions: List<Description>? = null
+    @SerializedName("experience")
+    private var experience: Int? = null
 
-    constructor(id: Int, address: List<Address>, date_start: String, date_end: String, descriptions: List<List<Description>>){
+    constructor(id: Int, address: List<Address>, date_start: String, date_end: String, descriptions: List<Description>, experience: Int){
         this.id = id
         this.address = address
         this.date_start = date_start
         this.date_end = date_end
         this.descriptions = descriptions
+        this.experience = experience
     }
 
     fun getId(): Int? {
@@ -33,7 +36,7 @@ class Event {
     fun getAddress(): List<Address>? {
         return address
     }
-    fun setAddress(descriptions: List<Address>){
+    fun setAddress(address: List<Address>){
         this.address = address
     }
 
@@ -51,10 +54,17 @@ class Event {
         this.date_end = date_end
     }
 
-    fun getDescriptions(): List<List<Description>>? {
+    fun getDescriptions(): List<Description>? {
         return descriptions
     }
-    fun setDescriptions(descriptions: List<List<Description>>){
+    fun setDescriptions(descriptions: List<Description>){
         this.descriptions = descriptions
+    }
+
+    fun getExperience(): Int? {
+        return experience
+    }
+    fun setExperience(experience: Int){
+        this.experience = experience
     }
 }

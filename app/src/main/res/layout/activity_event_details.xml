@@ -10,7 +10,8 @@
         android:id="@+id/mainUser_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/match_buttons">
 
         <TextView
             android:id="@+id/titleEvent_textView"
@@ -43,7 +44,7 @@
             android:paddingRight="10dp"
             android:text="@string/event_description"
             android:textColor="@android:color/black"
-            tools:text="@string/event_localisation" />
+            tools:text="@string/event_description" />
 
         <TextView
             android:id="@+id/dateStart_textView"
@@ -64,6 +65,21 @@
             android:paddingRight="10dp"
             android:text="@string/dateEnd_text"
             android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/participate_button"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_edittext"
+            android:fontFamily="@font/roboto_medium"
+            android:padding="@dimen/input_padding"
+            android:text="@string/participate"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/maps_layout"
