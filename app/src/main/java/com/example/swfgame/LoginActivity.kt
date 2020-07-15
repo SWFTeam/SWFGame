@@ -97,6 +97,14 @@ interface ApiInterface {
     @POST("bo/user")
     fun getUserByMail(@Header("Authorization") token: String, @Body info: GetUserBody): retrofit2.Call<User>
 
+    @Headers("Content-Type:application/json")
+    @POST("completed")
+    fun getCompletedChallenges(@Header("Authorization") token: String, @Body info: GetCompletedBody): retrofit2.Call<CompletedResult>
+
+    @Headers("Content-Type:application/json")
+    @POST("achieve")
+    fun completeChallenge(@Header("Authorization") token: String, @Body info: AchieveBody): retrofit2.Call<ResponseBody>
+
 }
 class RetrofitInstance {
     companion object {
@@ -132,3 +140,9 @@ data class Needs(val hasCar: Boolean, val hasBike: Boolean)
 data class TEST(val user: SignUpBody, val needs: Needs)
 
 data class GetUserBody(val email: String)
+
+data class GetCompletedBody(val userEmail: String)
+
+data class CompletedResult(val completed: Array<Int>)
+
+data class AchieveBody(val userEmail: String, val challId: Int)

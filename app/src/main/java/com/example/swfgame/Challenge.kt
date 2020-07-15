@@ -8,10 +8,13 @@ class Challenge {
     private var id: Int? = null
     @SerializedName("description")
     private var description: List<Description>? = null
+    @SerializedName("experience")
+    private var experience: Int? = null
 
-    constructor(id: Int, descriptions: List<List<Description>>){
+    constructor(id: Int, descriptions: List<List<Description>>, experience: Int){
         this.id = id
         this.description = description
+        this.experience = experience
     }
 
     fun getId(): Int? {
@@ -26,5 +29,12 @@ class Challenge {
     }
     fun setDescription(description: List<Description>){
         this.description = description
+    }
+
+    fun getExperience(): Int? {
+        return experience
+    }
+    fun setExperience(experience: Int){
+        this.experience = experience
     }
 }

@@ -3,6 +3,7 @@ package com.example.swfgame
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var username_textView: TextView
     lateinit var level_textView: TextView
     lateinit var email: String
+    lateinit var experience_progressBar: ProgressBar
     var user: User = User("ttt", "ttt", 1, "ttt", "ttt", 50)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +36,7 @@ class MainActivity : AppCompatActivity() {
 
             this.username_textView = findViewById(R.id.username_textView)
             this.level_textView = findViewById(R.id.level_textView)
+            this.experience_progressBar = findViewById(R.id.experience_progressBar)
 
             getUserByMail()
         }
@@ -90,9 +93,30 @@ class MainActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 if (response.code() == 200) {
+
                     user = response.body()!!
                     username_textView.text = user.getFirstname() + " " + user.getLastname()
-                    level_textView.text = "Level " + (user.getExperience()?.div(10)?.toInt()).toString()
+
+                    if(user.getExperience() == 0 || user.getExperience() == null){
+
+                        experience_progressBar.progress = 0
+                        experience_progressBar.tooltipText = "Experience : " + 0 + "/10"
+
+                        level_textView.text = "Level 1 - Exp "
+
+                    } else {
+
+                        var exp = user.getExperience()?.rem(10);
+
+                        if (exp != null) {
+                            experience_progressBar.progress = exp
+                            experience_progressBar.tooltipText = "Experience : " + exp.toString() + "/10"
+                        } else {
+                            experience_progressBar.progress = 0
+                        }
+
+                        level_textView.text = "Level " + (user.getExperience()?.div(10)?.toInt()).toString() + " - Expe "
+                    }
                     println("HERE " + user.getFirstname().toString())
                 } else {
                     Toast.makeText(this@MainActivity, "Login failed!", Toast.LENGTH_SHORT).show()

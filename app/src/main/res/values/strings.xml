@@ -28,7 +28,9 @@
     <string name="dateStart_text">Date start</string>
     <string name="dateEnd_text">Date end</string>
     <string name="username">Username</string>
-    <string name="level">Level 1</string>
+    <string name="level">Level 1 - Exp  </string>
+    <string name="experience">Experience</string>
+    <string name="back">Back</string>
 
     <!-- BOTTOM NAVIGATION VIEW -->
     <string name="bottom_navigation_menu_home">Home</string>
