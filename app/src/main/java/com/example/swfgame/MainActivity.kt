@@ -69,7 +69,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.action_advices -> {
                     println("Clicked on advices")
                     val intent = Intent(this, Advices::class.java)
-                    intent.putExtra("token", this.email)
+                    intent.putExtra("token", this.token)
+                    intent.putExtra("email", this.email)
                     startActivity(intent)
                     true
                 }
