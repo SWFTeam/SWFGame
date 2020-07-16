@@ -117,7 +117,7 @@ class MainActivity : AppCompatActivity() {
                             experience_progressBar.progress = 0
                         }
 
-                        level_textView.text = "Level " + (user.getExperience()?.div(10)?.toInt()).toString() + " - Expe "
+                        level_textView.text = "Level " + (user.getExperience()?.div(10)?.toInt()).toString() + " - Exp "
                     }
                     println("HERE " + user.getFirstname().toString())
                 } else {

@@ -133,12 +133,13 @@ class ChallengeDetails : AppCompatActivity() {
                                 }
                                 complete_button.text = "Already completed"
                                 //complete_button.setEnabled(false)
-                                back_button = findViewById(R.id.back_button)
-                                back_button.setOnClickListener {
-                                    finish()
-                                }
                             }
                             println("Nouvel id : " + it.toString() + " Chall id : " + challId)
+                        }
+
+                        back_button = findViewById(R.id.back_button)
+                        back_button.setOnClickListener {
+                            finish()
                         }
                     }
                 } else {
