@@ -64,7 +64,9 @@
             android:id="@+id/back_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button_inverse"
             android:text="@string/back"
+            android:textColor="@color/colorAccent"
             android:visibility="visible" />
 
     </LinearLayout>
