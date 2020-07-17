@@ -47,6 +47,7 @@ class Advices : AppCompatActivity() {
                     val intent = Intent(this, MainActivity::class.java)
                     intent.putExtra("token", this.token)
                     intent.putExtra("email", this.email)
+                    this.finish()
                     startActivity(intent)
                     true
                 }
@@ -55,6 +56,7 @@ class Advices : AppCompatActivity() {
                     val intent = Intent(this, Challenges::class.java)
                     intent.putExtra("token", this.token)
                     intent.putExtra("email", this.email)
+                    this.finish()
                     startActivity(intent)
                     true
                 }
@@ -63,6 +65,7 @@ class Advices : AppCompatActivity() {
                     val intent = Intent(this, Events::class.java)
                     intent.putExtra("token", this.token)
                     intent.putExtra("email", this.email)
+                    this.finish()
                     startActivity(intent)
                     true
                 }
