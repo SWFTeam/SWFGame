@@ -109,10 +109,18 @@ interface ApiInterface {
     @POST("challenge")
     fun getChallenge(@Header("Authorization") token: String, @Body info: SendId): retrofit2.Call<ChallengeResult>
 
+    @Headers("Content-Type:application/json")
+    @POST("participated")
+    fun getParticipatedEvents(@Header("Authorization") token: String, @Body info: GetCompletedBody): retrofit2.Call<CompletedResult>
+
+    @Headers("Content-Type:application/json")
+    @POST("participate")
+    fun participateEvent(@Header("Authorization") token: String, @Body info: ParticipateBody): retrofit2.Call<ResponseBody>
+
 }
 class RetrofitInstance {
     companion object {
-        val BASE_URL: String = "http://192.168.1.46:3000/"
+        val BASE_URL: String = "http://192.168.1.75:3000/"
 
         val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
             this.level = HttpLoggingInterceptor.Level.BODY
@@ -154,3 +162,5 @@ data class AchieveBody(val userEmail: String, val challId: Int)
 data class SendId(val id: Int)
 
 data class ChallengeResult(val challenge: Challenge)
+
+data class ParticipateBody(val userEmail: String, val eventId: Int)

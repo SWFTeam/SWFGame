@@ -66,6 +66,16 @@
             android:text="@string/dateEnd_text"
             android:textColor="@android:color/black" />
 
+        <TextView
+            android:id="@+id/experience_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="20dp"
+            android:paddingRight="10dp"
+            android:text="@string/experience"
+            android:textColor="@android:color/black" />
+
         <Button
             android:id="@+id/participate_button"
             style="@style/Widget.MaterialComponents.Button.Icon"

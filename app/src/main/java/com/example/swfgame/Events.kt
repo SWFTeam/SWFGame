@@ -109,6 +109,7 @@ class Events : AppCompatActivity() {
                 intent.putExtra("experience", event.getExperience().toString())
                 intent.putExtra("token", token)
                 intent.putExtra("email", email)
+                intent.putExtra("event_id", event.getId().toString())
                 startActivity(intent)
             }
 

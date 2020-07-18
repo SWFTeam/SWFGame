@@ -1,13 +1,19 @@
 package com.example.swfgame
 
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class EventDetails : AppCompatActivity() {
 
@@ -21,8 +27,10 @@ class EventDetails : AppCompatActivity() {
     lateinit var dateStart_textView: TextView
     lateinit var dateEnd_textView: TextView
     lateinit var participate_button: Button
+    lateinit var experience_textView: TextView
     lateinit var token: String
     lateinit var email: String
+    lateinit var eventId: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +40,9 @@ class EventDetails : AppCompatActivity() {
 
         this.token = intent.getStringExtra("token")
         this.email = intent.getStringExtra("email")
+        this.eventId = intent.getStringExtra("event_id")
+
+        getParticipatedEvents()
 
         this.bottomNav = findViewById(R.id.activity_main_bottom_navigation)
         bottomNav.selectedItemId = R.id.action_events
@@ -121,7 +132,12 @@ class EventDetails : AppCompatActivity() {
         this.participate_button = findViewById(R.id.participate_button)
         this.participate_button.setOnClickListener {
             //Participate action
+            participateEvent()
+            this.finish()
         }
+
+        this.experience_textView = findViewById(R.id.experience_textView)
+        this.experience_textView.text = "Cet event vous rapportera " + experience + " points d'experience."
 
     }
 
@@ -131,5 +147,73 @@ class EventDetails : AppCompatActivity() {
         val uri = "https://www.google.fr/maps/place/" + address
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
         startActivity(intent)
+    }
+
+    private fun getParticipatedEvents(){
+
+        val retIn = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
+        val UserBody = GetCompletedBody(this.email)
+        retIn.getParticipatedEvents(this.token, UserBody).enqueue(object :
+            Callback<CompletedResult> {
+            override fun onFailure(call: Call<CompletedResult>, t: Throwable) {
+                Toast.makeText(
+                    this@EventDetails,
+                    t.message,
+                    Toast.LENGTH_SHORT
+                ).show()
+                println("ERROR : " + t.message)
+            }
+
+            override fun onResponse(call: Call<CompletedResult>, response: Response<CompletedResult>) {
+                if (response.code() == 200) {
+                    var completedIds = response.body()?.completed
+                    if (completedIds != null) {
+                        completedIds.forEach {
+                            if(it.toString() == eventId){
+                                participate_button.setBackgroundColor(Color.BLACK)
+                                participate_button.setOnClickListener {
+
+                                }
+                                participate_button.text = "Already participated"
+                                //complete_button.setEnabled(false)
+                            }
+                            println("Nouvel id : " + it.toString() + " Event id : " + eventId)
+                        }
+                    }
+                } else {
+                    Toast.makeText(this@EventDetails, "Login failed!", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
+    }
+
+    private fun participateEvent(){
+
+        val retIn = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
+        val ParticipateBody = ParticipateBody(this.email, this.eventId.toInt())
+        retIn.participateEvent(this.token, ParticipateBody).enqueue(object : Callback<ResponseBody> {
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Toast.makeText(
+                    this@EventDetails,
+                    t.message,
+                    Toast.LENGTH_SHORT
+                ).show()
+                println("ERROR : " + t.message)
+            }
+
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                if (response.code() == 200) {
+                    var response = response.body()?.string()
+                    if (response != null) {
+                        if(response.contains("successfully")){
+                            Toast.makeText(this@EventDetails, "Event participated, your experience has been increased !", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                    println("EASY " + response)
+                } else {
+                    Toast.makeText(this@EventDetails, "Login failed!", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
     }
 }
