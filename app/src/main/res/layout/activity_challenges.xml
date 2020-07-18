@@ -14,7 +14,7 @@
         android:padding="20dp">
 
         <TextView
-            android:id="@+id/title_textView"
+            android:id="@+id/titleCompleted_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/list_challenge_title"

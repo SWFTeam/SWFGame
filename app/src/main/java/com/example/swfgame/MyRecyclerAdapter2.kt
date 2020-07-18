@@ -8,7 +8,7 @@ import com.example.swfgame.Challenge
 import com.example.swfgame.R
 import kotlinx.android.synthetic.main.my_challenge_item.view.*
 
-class MyRecyclerAdapter2(private val dataset: Array<Challenge>, private val onClickListener: ((View, Challenge) -> Unit)?) : RecyclerView.Adapter<MyRecyclerAdapter2.MyViewHolder>() {
+class MyRecyclerAdapter2(private val dataset: ArrayList<Challenge>, private val onClickListener: ((View, Challenge) -> Unit)?) : RecyclerView.Adapter<MyRecyclerAdapter2.MyViewHolder>() {
 
     open class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 

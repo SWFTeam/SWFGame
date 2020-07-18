@@ -6,12 +6,17 @@ import android.os.Bundle
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.tabs.TabLayout
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var viewpager: ViewPager
+    private lateinit var tabs: TabLayout
 
     lateinit var token: String
     lateinit var bottomNav: BottomNavigationView
@@ -40,6 +45,10 @@ class MainActivity : AppCompatActivity() {
             this.experience_progressBar = findViewById(R.id.experience_progressBar)
 
             getUserByMail()
+
+            //Setup TabViews
+            initViews()
+            setupViewPager()
         }
 
         this.bottomNav = findViewById(R.id.activity_main_bottom_navigation)
@@ -80,6 +89,27 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+
+    private fun initViews() {
+        tabs = findViewById(R.id.tabs)
+        viewpager = findViewById(R.id.viewpager)
+    }
+
+    private fun setupViewPager() {
+
+        val adapter = MyFragmentPagerAdapter(getSupportFragmentManager())
+
+        var firstFragmet: MyFrament = MyFrament.newInstance(this.token, this.email)
+        var secondFragmet: MyFrament = MyFrament.newInstance(this.token, this.email)
+
+        adapter.addFragment(firstFragmet, "Challenges √")
+        adapter.addFragment(secondFragmet, "Events √")
+
+        viewpager!!.adapter = adapter
+
+        tabs!!.setupWithViewPager(viewpager)
+
     }
 
     private fun getUserByMail(){

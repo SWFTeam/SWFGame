@@ -20,7 +20,7 @@ class Challenges : AppCompatActivity() {
     lateinit var adapter: RecyclerView.Adapter<*>
     lateinit var manager: RecyclerView.LayoutManager
     lateinit var token: String
-    var items: Array<Challenge> = emptyArray()
+    var items: ArrayList<Challenge>? = null
     lateinit var bottomNav: BottomNavigationView
     lateinit var email: String
 
@@ -78,8 +78,8 @@ class Challenges : AppCompatActivity() {
 
     private fun getAllChallenges(){
         val retIn = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
-        retIn.getAllChallenges(this.token).enqueue(object : Callback<Array<Challenge>> {
-            override fun onFailure(call: Call<Array<Challenge>?>, t: Throwable) {
+        retIn.getAllChallenges(this.token).enqueue(object : Callback<ArrayList<Challenge>> {
+            override fun onFailure(call: Call<ArrayList<Challenge>?>, t: Throwable) {
                 Toast.makeText(
                     this@Challenges,
                     t.message,
@@ -105,15 +105,15 @@ class Challenges : AppCompatActivity() {
                 startActivity(intent)
             }
 
-            override fun onResponse(call: Call<Array<Challenge>>, response: Response<Array<Challenge>>) {
+            override fun onResponse(call: Call<ArrayList<Challenge>>, response: Response<ArrayList<Challenge>>) {
                 if (response.code() == 200) {
                     items = response.body()!!
                     println("HERE " + items?.get(0)?.getDescription()?.get(0)?.getDescription())
                     recyclerView = findViewById(R.id.list_recycler_view2)
 
-                    println("WESH   " + items[0].getDescription()?.get(0)?.getDescription())
+                    println("WESH   " + items!![0].getDescription()?.get(0)?.getDescription())
 
-                    adapter = MyRecyclerAdapter2(items, this::onClickItem)
+                    adapter = MyRecyclerAdapter2(items!!, this::onClickItem)
                     manager = LinearLayoutManager(this@Challenges)
 
                     recyclerView.apply {

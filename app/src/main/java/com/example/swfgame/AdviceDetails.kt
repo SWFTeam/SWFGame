@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
-import androidx.core.app.NotificationCompat.EXTRA_MESSAGES
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class AdviceDetails : AppCompatActivity() {
@@ -82,7 +80,7 @@ class AdviceDetails : AppCompatActivity() {
         var type = intent.getStringExtra("type")
         var foreign_id = intent.getStringExtra("foreign_id")
 
-        this.title_textView = findViewById(R.id.title_textView)
+        this.title_textView = findViewById(R.id.titleCompleted_textView)
         this.title_textView.text = title.toString()
 
         this.description_textView = findViewById(R.id.description_textView)
