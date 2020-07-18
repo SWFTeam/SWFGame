@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = MyFragmentPagerAdapter(getSupportFragmentManager())
 
         var firstFragmet: MyFrament = MyFrament.newInstance(this.token, this.email)
-        var secondFragmet: MyFrament = MyFrament.newInstance(this.token, this.email)
+        var secondFragmet: MyFrament2 = MyFrament2.newInstance(this.token, this.email)
 
         adapter.addFragment(firstFragmet, "Challenges √")
         adapter.addFragment(secondFragmet, "Events √")

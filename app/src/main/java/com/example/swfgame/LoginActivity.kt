@@ -91,7 +91,7 @@ interface ApiInterface {
 
     @Headers("Content-Type:application/json")
     @GET("bo/events")
-    fun getAllEvents(@Header("Authorization") token: String): retrofit2.Call<Array<Event>>
+    fun getAllEvents(@Header("Authorization") token: String): retrofit2.Call<ArrayList<Event>>
 
     @Headers("Content-Type:application/json")
     @POST("bo/user")
@@ -116,6 +116,11 @@ interface ApiInterface {
     @Headers("Content-Type:application/json")
     @POST("participate")
     fun participateEvent(@Header("Authorization") token: String, @Body info: ParticipateBody): retrofit2.Call<ResponseBody>
+
+    @Headers("Content-Type:application/json")
+    @GET("event/{id}")
+    fun getEvent(@Header("Authorization") token: String, @Path("id")id: Int): retrofit2.Call<Event>
+
 
 }
 class RetrofitInstance {

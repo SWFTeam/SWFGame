@@ -8,7 +8,7 @@ import com.example.swfgame.Event
 import com.example.swfgame.R
 import kotlinx.android.synthetic.main.my_event_item.view.*
 
-class MyRecyclerAdapter3(private val dataset: Array<Event>, private val onClickListener: ((View, Event) -> Unit)?) : RecyclerView.Adapter<MyRecyclerAdapter3.MyViewHolder>() {
+class MyRecyclerAdapter3(private val dataset: ArrayList<Event>, private val onClickListener: ((View, Event) -> Unit)?) : RecyclerView.Adapter<MyRecyclerAdapter3.MyViewHolder>() {
 
     open class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 

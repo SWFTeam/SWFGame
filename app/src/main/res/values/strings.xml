@@ -33,6 +33,7 @@
     <string name="back">Back</string>
     <string name="participate">Participate</string>
     <string name="completed_challenges">Completed challenges:</string>
+    <string name="participated_events">Participated events:</string>
 
     <!-- BOTTOM NAVIGATION VIEW -->
     <string name="bottom_navigation_menu_home">Home</string>

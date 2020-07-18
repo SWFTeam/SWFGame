@@ -19,7 +19,7 @@ class Events : AppCompatActivity() {
     lateinit var adapter: RecyclerView.Adapter<*>
     lateinit var manager: RecyclerView.LayoutManager
     lateinit var token: String
-    var items: Array<Event> = emptyArray()
+    var items: ArrayList<Event>? = null
     lateinit var bottomNav: BottomNavigationView
     lateinit var email: String
 
@@ -77,8 +77,8 @@ class Events : AppCompatActivity() {
 
     private fun getAllEvents(){
         val retIn = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
-        retIn.getAllEvents(this.token).enqueue(object : Callback<Array<Event>> {
-            override fun onFailure(call: Call<Array<Event>?>, t: Throwable) {
+        retIn.getAllEvents(this.token).enqueue(object : Callback<ArrayList<Event>> {
+            override fun onFailure(call: Call<ArrayList<Event>?>, t: Throwable) {
                 Toast.makeText(
                     this@Events,
                     t.message,
@@ -113,15 +113,15 @@ class Events : AppCompatActivity() {
                 startActivity(intent)
             }
 
-            override fun onResponse(call: Call<Array<Event>>, response: Response<Array<Event>>) {
+            override fun onResponse(call: Call<ArrayList<Event>>, response: Response<ArrayList<Event>>) {
                 if (response.code() == 200) {
                     items = response.body()!!
                     println("HERE " + items?.get(0)?.getAddress()?.get(0)?.getCity())
                     recyclerView = findViewById(R.id.list_recycler_view3)
 
-                    println("WESH   " + items[0].getDescriptions()?.get(0)?.getDescription())
+                    println("WESH   " + items!![0].getDescriptions()?.get(0)?.getDescription())
 
-                    adapter = MyRecyclerAdapter3(items, this::onClickEvent)
+                    adapter = MyRecyclerAdapter3(items!!, this::onClickEvent)
                     manager = LinearLayoutManager(this@Events)
 
                     recyclerView.apply {
