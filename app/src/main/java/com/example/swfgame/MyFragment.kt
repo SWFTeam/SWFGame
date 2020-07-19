@@ -65,8 +65,6 @@ class MyFrament : Fragment() {
 
     private fun getChallenge(challId: Int) {
 
-        println("Method called with id = " + challId)
-
         val retIn = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
         val requestBody = SendId(challId)
         retIn.getChallenge(this.token, requestBody).enqueue(object :
@@ -78,7 +76,6 @@ class MyFrament : Fragment() {
 
             private fun onClickItem(view: View, challenge: Challenge){
 
-                println("Clicked on " + challenge.getDescription()?.get(0)?.getDescription())
                 var intent = Intent(context, ChallengeDetails::class.java)
                 intent.putExtra("id", challenge.getId().toString())
                 intent.putExtra("country_code", challenge.getDescription()?.get(0)?.getCountryCode())
@@ -95,10 +92,6 @@ class MyFrament : Fragment() {
 
             override fun onResponse(call: Call<ChallengeResult>, response: Response<ChallengeResult>) {
                 if (response.code() == 200) {
-
-                    println("Challenge id : " + response.body()?.challenge?.getId())
-                    println("Challenge experience : " + response.body()?.challenge?.getExperience())
-                    println("Challenge title : " + response.body()?.challenge?.getDescription()?.get(0)?.getTitle())
 
                     if(items.isNullOrEmpty()){
                         items = arrayListOf(response.body()!!.challenge)
@@ -143,7 +136,6 @@ class MyFrament : Fragment() {
                     var completedIds = response.body()?.completed
                     if (completedIds != null) {
                         completedIds.forEach {
-                            println("Nouvel id : " + it.toString())
 
                             val challId = it.toInt()
                             getChallenge(challId)

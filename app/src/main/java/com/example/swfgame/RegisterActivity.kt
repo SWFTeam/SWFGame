@@ -83,8 +83,6 @@ class RegisterActivity : AppCompatActivity() {
                     val hasBike: Boolean = this.hasBikeCheckBox.isChecked
 
                     this.registerButton.setOnClickListener {
-                        println("REGISTER")
-
                         signup(firstname, lastname, email, password, "12/06/1997", country, city, streetName, zipcode, houseNumber, complement, hasCar, hasBike)
                     }
                 }
@@ -129,7 +127,6 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun signup(firstname: String, lastname: String, email: String, password: String, birthday: String, country: String, city: String, streetName: String, zipcode: String, houseNumber: String, complement: String, hasCar: Boolean, hasBike: Boolean){
         val retIn = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
-        println("HEREEEE    " + birthday)
         val signUpInfo = TEST(SignUpBody(firstname, lastname, email, password, birthday, Address(country, city, streetName, zipcode.toInt(), houseNumber.toInt(), complement), Address(country, city, streetName, zipcode.toInt(), houseNumber.toInt(), complement)), Needs(hasCar, hasBike))
         retIn.signup(signUpInfo).enqueue(object : Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {

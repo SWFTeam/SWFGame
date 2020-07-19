@@ -34,7 +34,6 @@ class LoginActivity : AppCompatActivity() {
         }
         var loginButton = findViewById<Button>(R.id.login_button)
         loginButton.setOnClickListener {
-            println("LOGIN")
 
             signin(emailTextView.text.toString(), passwordTextView.text.toString())
 
@@ -59,7 +58,6 @@ class LoginActivity : AppCompatActivity() {
                     var responseSplit = tmp?.split('"')
                     var token = responseSplit?.get(3)
                     var intent = Intent(applicationContext, MainActivity::class.java)
-                    //println("ICI    " + response.body()?.string())
                     intent.putExtra("token", token)
                     intent.putExtra("email", email)
                     startActivity(intent)
@@ -125,7 +123,7 @@ interface ApiInterface {
 }
 class RetrofitInstance {
     companion object {
-        val BASE_URL: String = "http://192.168.1.75:3000/"
+        val BASE_URL: String = "http://192.168.1.24:3000/"
 
         val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
             this.level = HttpLoggingInterceptor.Level.BODY

@@ -40,7 +40,6 @@ class Events : AppCompatActivity() {
         bottomNav.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.action_home -> {
-                    println("Clicked on home")
                     val intent = Intent(this, MainActivity::class.java)
                     intent.putExtra("token", token)
                     intent.putExtra("email", email)
@@ -49,7 +48,6 @@ class Events : AppCompatActivity() {
                     true
                 }
                 R.id.action_challenges -> {
-                    println("Clicked on challenges")
                     val intent = Intent(this, Challenges::class.java)
                     intent.putExtra("token", token)
                     intent.putExtra("email", email)
@@ -58,11 +56,9 @@ class Events : AppCompatActivity() {
                     true
                 }
                 R.id.action_events -> {
-                    println("Clicked on events")
                     true
                 }
                 R.id.action_advices -> {
-                    println("Clicked on advices")
                     val intent = Intent(this, Advices::class.java)
                     intent.putExtra("token", token)
                     intent.putExtra("email", email)
@@ -89,7 +85,6 @@ class Events : AppCompatActivity() {
 
             private fun onClickEvent(view: View, event: Event){
 
-                println("Clicked on " + event.getAddress()?.get(0)?.getCity())
                 var intent = Intent(applicationContext, EventDetails::class.java)
                 intent.putExtra("id", event.getDescriptions()?.get(0)?.getId().toString())
                 intent.putExtra("country_code", event.getDescriptions()?.get(0)?.getCountryCode().toString())
@@ -116,10 +111,7 @@ class Events : AppCompatActivity() {
             override fun onResponse(call: Call<ArrayList<Event>>, response: Response<ArrayList<Event>>) {
                 if (response.code() == 200) {
                     items = response.body()!!
-                    println("HERE " + items?.get(0)?.getAddress()?.get(0)?.getCity())
                     recyclerView = findViewById(R.id.list_recycler_view3)
-
-                    println("WESH   " + items!![0].getDescriptions()?.get(0)?.getDescription())
 
                     adapter = MyRecyclerAdapter3(items!!, this::onClickEvent)
                     manager = LinearLayoutManager(this@Events)

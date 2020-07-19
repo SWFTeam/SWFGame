@@ -137,7 +137,6 @@ class ChallengeDetails : AppCompatActivity() {
                                 complete_button.text = "Already completed"
                                 //complete_button.setEnabled(false)
                             }
-                            println("Nouvel id : " + it.toString() + " Chall id : " + challId)
                         }
 
                         back_button = findViewById(R.id.back_button)
@@ -174,7 +173,6 @@ class ChallengeDetails : AppCompatActivity() {
                             Toast.makeText(this@ChallengeDetails, "Challenge achieved, your experience has been increased !", Toast.LENGTH_SHORT).show()
                         }
                     }
-                    println("EASY " + response)
                 } else {
                     Toast.makeText(this@ChallengeDetails, "Login failed!", Toast.LENGTH_SHORT).show()
                 }

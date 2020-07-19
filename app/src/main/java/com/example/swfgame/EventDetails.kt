@@ -50,7 +50,6 @@ class EventDetails : AppCompatActivity() {
         bottomNav.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.action_home -> {
-                    println("Clicked on home")
                     val intent = Intent(this, MainActivity::class.java)
                     intent.putExtra("token", token)
                     intent.putExtra("email", email)
@@ -59,7 +58,6 @@ class EventDetails : AppCompatActivity() {
                     true
                 }
                 R.id.action_challenges -> {
-                    println("Clicked on challenges")
                     val intent = Intent(this, Challenges::class.java)
                     intent.putExtra("token", token)
                     intent.putExtra("email", email)
@@ -68,12 +66,10 @@ class EventDetails : AppCompatActivity() {
                     true
                 }
                 R.id.action_events -> {
-                    println("Clicked on events")
                     this.finish()
                     true
                 }
                 R.id.action_advices -> {
-                    println("Clicked on advices")
                     val intent = Intent(this, Advices::class.java)
                     intent.putExtra("token", token)
                     intent.putExtra("email", email)
@@ -177,7 +173,6 @@ class EventDetails : AppCompatActivity() {
                                 participate_button.text = "Already participated"
                                 //complete_button.setEnabled(false)
                             }
-                            println("Nouvel id : " + it.toString() + " Event id : " + eventId)
                         }
                     }
                 } else {
@@ -209,7 +204,6 @@ class EventDetails : AppCompatActivity() {
                             Toast.makeText(this@EventDetails, "Event participated, your experience has been increased !", Toast.LENGTH_SHORT).show()
                         }
                     }
-                    println("EASY " + response)
                 } else {
                     Toast.makeText(this@EventDetails, "Login failed!", Toast.LENGTH_SHORT).show()
                 }

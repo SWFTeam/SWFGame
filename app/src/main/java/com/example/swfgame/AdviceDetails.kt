@@ -86,7 +86,5 @@ class AdviceDetails : AppCompatActivity() {
         this.description_textView = findViewById(R.id.description_textView)
         this.description_textView.text = description.toString()
 
-        println("ICIIII " + title)
-
     }
 }

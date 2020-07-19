@@ -108,10 +108,7 @@ class Challenges : AppCompatActivity() {
             override fun onResponse(call: Call<ArrayList<Challenge>>, response: Response<ArrayList<Challenge>>) {
                 if (response.code() == 200) {
                     items = response.body()!!
-                    println("HERE " + items?.get(0)?.getDescription()?.get(0)?.getDescription())
                     recyclerView = findViewById(R.id.list_recycler_view2)
-
-                    println("WESH   " + items!![0].getDescription()?.get(0)?.getDescription())
 
                     adapter = MyRecyclerAdapter2(items!!, this::onClickItem)
                     manager = LinearLayoutManager(this@Challenges)

@@ -43,7 +43,6 @@ class Advices : AppCompatActivity() {
         bottomNav.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.action_home -> {
-                    println("Clicked on home")
                     val intent = Intent(this, MainActivity::class.java)
                     intent.putExtra("token", this.token)
                     intent.putExtra("email", this.email)
@@ -52,7 +51,6 @@ class Advices : AppCompatActivity() {
                     true
                 }
                 R.id.action_challenges -> {
-                    println("Clicked on challenges")
                     val intent = Intent(this, Challenges::class.java)
                     intent.putExtra("token", this.token)
                     intent.putExtra("email", this.email)
@@ -61,7 +59,6 @@ class Advices : AppCompatActivity() {
                     true
                 }
                 R.id.action_events -> {
-                    println("Clicked on events")
                     val intent = Intent(this, Events::class.java)
                     intent.putExtra("token", this.token)
                     intent.putExtra("email", this.email)
@@ -70,7 +67,6 @@ class Advices : AppCompatActivity() {
                     true
                 }
                 R.id.action_advices -> {
-                    println("Clicked on advices")
                     true
                 }
                 else -> false
@@ -93,7 +89,6 @@ class Advices : AppCompatActivity() {
 
             private fun onClickItem(view: View, advice: Advice){
 
-                println("Clicked on " + advice.getDescriptions()?.get(0)?.getDescription())
                 var intent = Intent(applicationContext, AdviceDetails::class.java)
                 intent.putExtra("id", advice.getDescriptions()?.get(0)?.getId())
                 intent.putExtra("country_code", advice.getDescriptions()?.get(0)?.getCountryCode())

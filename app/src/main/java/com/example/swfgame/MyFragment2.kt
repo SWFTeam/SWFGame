@@ -50,21 +50,15 @@ class MyFrament2 : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view: View? = inflater.inflate(R.layout.fragment_events, container, false);
 
-        println("CAVA")
-
         this.token = arguments!!.getString("token")
         this.email = arguments!!.getString("email")
 
-        println("TEST - Before getParticipatedEvents")
         getParticipatedEvents()
-        println("TEST - After getParticipatedEvents")
 
         return view
     }
 
     private fun getEvent(eventId: Int) {
-
-        println("Method called with id = " + eventId)
 
         val retIn = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
         val requestBody = SendId(eventId)
@@ -77,7 +71,6 @@ class MyFrament2 : Fragment() {
 
             private fun onClickItem(view: View, event: Event){
 
-                println("Clicked on " + event.getDescriptions()?.get(0)?.getDescription())
                 var intent = Intent(context, EventDetails::class.java)
                 intent.putExtra("id", event.getDescriptions()?.get(0)?.getId().toString())
                 intent.putExtra("country_code", event.getDescriptions()?.get(0)?.getCountryCode().toString())
@@ -104,17 +97,11 @@ class MyFrament2 : Fragment() {
             override fun onResponse(call: Call<Event>, response: Response<Event>) {
                 if (response.code() == 200) {
 
-                    println("Event id : " + response.body()?.getId().toString())
-                    println("Event experience : " + response.body()?.getExperience())
-                    println("Event title : " + response.body()?.getDescriptions()?.get(0)?.getTitle())
-
                     if(items.isNullOrEmpty()){
                         items = arrayListOf(response.body()!!)
                     } else {
                         items!!.add(response.body()!!)
                     }
-
-                    println("HERER  " + items!!.size.toString())
 
                     recyclerView = view!!.findViewById(R.id.completed_events_recyclerView) as RecyclerView
 
@@ -150,11 +137,9 @@ class MyFrament2 : Fragment() {
 
             override fun onResponse(call: Call<CompletedResult>, response: Response<CompletedResult>) {
                 if (response.code() == 200) {
-                    println("PASSSED")
                     var completedIds = response.body()?.completed
                     if (completedIds != null) {
                         completedIds.forEach {
-                            println("Nouvel id : " + it.toString())
 
                             val eventId = it.toInt()
                             getEvent(eventId)

@@ -56,11 +56,9 @@ class MainActivity : AppCompatActivity() {
         bottomNav.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.action_home -> {
-                    println("Clicked on home")
                     true
                 }
                 R.id.action_challenges -> {
-                    println("Clicked on challenges")
                     val intent = Intent(this, Challenges::class.java)
                     intent.putExtra("token", this.token)
                     intent.putExtra("email", this.email)
@@ -69,7 +67,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.action_events -> {
-                    println("Clicked on events")
                     val intent = Intent(this, Events::class.java)
                     intent.putExtra("token", this.token)
                     intent.putExtra("email", this.email)
@@ -78,7 +75,6 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.action_advices -> {
-                    println("Clicked on advices")
                     val intent = Intent(this, Advices::class.java)
                     intent.putExtra("token", this.token)
                     intent.putExtra("email", this.email)
@@ -152,7 +148,6 @@ class MainActivity : AppCompatActivity() {
 
                         level_textView.text = "Level " + (user.getExperience()?.div(10)?.toInt()).toString() + " - Exp "
                     }
-                    println("HERE " + user.getFirstname().toString())
                 } else {
                     Toast.makeText(this@MainActivity, "Login failed!", Toast.LENGTH_SHORT).show()
                 }
