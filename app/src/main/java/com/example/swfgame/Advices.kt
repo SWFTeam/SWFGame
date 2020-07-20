@@ -1,11 +1,11 @@
 package com.example.swfgame
 
+import ApiInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat.EXTRA_MESSAGES
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tp_android_2.MyRecyclerAdapter
@@ -13,7 +13,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.File
 
 
 class Advices : AppCompatActivity() {

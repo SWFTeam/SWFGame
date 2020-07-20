@@ -1,5 +1,9 @@
 package com.example.swfgame
 
+import ApiInterface
+import CompletedResult
+import GetCompletedBody
+import ParticipateBody
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri

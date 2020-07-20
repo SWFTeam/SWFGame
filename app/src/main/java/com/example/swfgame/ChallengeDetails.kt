@@ -1,18 +1,18 @@
 package com.example.swfgame
 
+import AchieveBody
+import ApiInterface
+import CompletedResult
+import GetCompletedBody
 import android.content.Intent
 import android.graphics.Color
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.graphics.toColorInt
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_challenge_details.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback

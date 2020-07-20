@@ -1,14 +1,15 @@
 package com.example.swfgame
 
+import ApiInterface
+import ChallengeResult
+import CompletedResult
+import GetCompletedBody
+import SendId
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
-import android.provider.AlarmClock.EXTRA_MESSAGE
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,7 +17,6 @@ import com.example.tp_android_2.MyRecyclerAdapter2
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.system.measureTimeMillis
 
 class MyFrament : Fragment() {
 

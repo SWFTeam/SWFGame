@@ -1,5 +1,9 @@
 package com.example.swfgame
 
+import ApiInterface
+import CompletedResult
+import GetCompletedBody
+import SendId
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
