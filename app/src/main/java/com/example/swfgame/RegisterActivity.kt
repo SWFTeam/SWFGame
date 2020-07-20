@@ -13,6 +13,9 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -59,9 +62,7 @@ class RegisterActivity : AppCompatActivity() {
             R.array.country_arrays,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
             countrySpinner.adapter = adapter
         }
 
@@ -86,8 +87,11 @@ class RegisterActivity : AppCompatActivity() {
                     val hasCar: Boolean = this.hasCarCehckBox.isChecked
                     val hasBike: Boolean = this.hasBikeCheckBox.isChecked
 
+                    val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH)
+                    val birthdayIso = LocalDate.parse(birthday, formatter)
+
                     this.registerButton.setOnClickListener {
-                        signup(firstname, lastname, email, password, "12/06/1997", country, city, streetName, zipcode, houseNumber, complement, hasCar, hasBike)
+                        signup(firstname, lastname, email, password, birthdayIso.toString(), country, city, streetName, zipcode, houseNumber, complement, hasCar, hasBike)
                     }
                 }
             }
@@ -121,7 +125,7 @@ class RegisterActivity : AppCompatActivity() {
     fun showPasswordDialog() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Erreur")
-        builder.setMessage("Les mots de passes de correspondent pas ${this.passwordEditText.text} / ${this.passwordConfirmEditText.text}.")
+        builder.setMessage("Les mots de passes de correspondent pas.")
 
         builder.setPositiveButton(android.R.string.yes) { dialog, which ->
 
