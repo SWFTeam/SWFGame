@@ -69,7 +69,7 @@
                         android:layout_weight="1"
                         android:max="10"
                         android:progress="5"
-                        android:progressTint="@color/colorPrimary"
+                        android:progressTint="@color/colorAccent"
                         android:tooltipText="@string/experience" />
 
                 </LinearLayout>
