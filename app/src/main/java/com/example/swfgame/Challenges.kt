@@ -90,15 +90,23 @@ class Challenges : AppCompatActivity() {
 
             private fun onClickItem(view: View, challenge: Challenge){
 
-                println("Clicked on " + challenge.getDescription()?.get(0)?.getDescription())
+                var index: Int = 0
+
+                for(i in 0..challenge.getDescription()?.size!!){
+                    if(challenge.getDescription()?.get(i)?.getCountryCode().toString() == "GB"){
+                        index = i
+                        break
+                    }
+                }
+
                 var intent = Intent(applicationContext, ChallengeDetails::class.java)
                 intent.putExtra("id", challenge.getId().toString())
-                intent.putExtra("country_code", challenge.getDescription()?.get(0)?.getCountryCode())
-                intent.putExtra("title", challenge.getDescription()?.get(0)?.getTitle())
-                intent.putExtra("name", challenge.getDescription()?.get(0)?.getName())
-                intent.putExtra("description", challenge.getDescription()?.get(0)?.getDescription())
-                intent.putExtra("type", challenge.getDescription()?.get(0)?.getType())
-                intent.putExtra("foreign_id", challenge.getDescription()?.get(0)?.getForeignId())
+                intent.putExtra("country_code", challenge.getDescription()?.get(index)?.getCountryCode())
+                intent.putExtra("title", challenge.getDescription()?.get(index)?.getTitle())
+                intent.putExtra("name", challenge.getDescription()?.get(index)?.getName())
+                intent.putExtra("description", challenge.getDescription()?.get(index)?.getDescription())
+                intent.putExtra("type", challenge.getDescription()?.get(index)?.getType())
+                intent.putExtra("foreign_id", challenge.getDescription()?.get(index)?.getForeignId())
                 intent.putExtra("experience", challenge.getExperience().toString())
                 intent.putExtra("token", token)
                 intent.putExtra("email", email)

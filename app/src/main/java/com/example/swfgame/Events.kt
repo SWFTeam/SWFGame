@@ -86,20 +86,29 @@ class Events : AppCompatActivity() {
 
             private fun onClickEvent(view: View, event: Event){
 
+                var index: Int = 0
+
+                for(i in 0..event.getDescriptions()?.size!!){
+                    if(event.getDescriptions()?.get(i)?.getCountryCode().toString() == "GB"){
+                        index = i
+                        break
+                    }
+                }
+
                 var intent = Intent(applicationContext, EventDetails::class.java)
-                intent.putExtra("id", event.getDescriptions()?.get(0)?.getId().toString())
-                intent.putExtra("country_code", event.getDescriptions()?.get(0)?.getCountryCode().toString())
-                intent.putExtra("title", event.getDescriptions()?.get(0)?.getTitle().toString())
-                intent.putExtra("name", event.getDescriptions()?.get(0)?.getName().toString())
-                intent.putExtra("description", event.getDescriptions()?.get(0)?.getDescription().toString())
-                intent.putExtra("type", event.getDescriptions()?.get(0)?.getType().toString())
-                intent.putExtra("foreign_id", event.getDescriptions()?.get(0)?.getForeignId().toString())
-                intent.putExtra("country", event.getAddress()?.get(0)?.getCountry())
-                intent.putExtra("city", event.getAddress()?.get(0)?.getCity().toString())
-                intent.putExtra("street", event.getAddress()?.get(0)?.getStreet().toString())
-                intent.putExtra("zip_code", event.getAddress()?.get(0)?.getZipCode().toString())
-                intent.putExtra("nb_house", event.getAddress()?.get(0)?.getNbHouse().toString())
-                intent.putExtra("complement", event.getAddress()?.get(0)?.getComplement().toString())
+                intent.putExtra("id", event.getDescriptions()?.get(index)?.getId().toString())
+                intent.putExtra("country_code", event.getDescriptions()?.get(index)?.getCountryCode().toString())
+                intent.putExtra("title", event.getDescriptions()?.get(index)?.getTitle().toString())
+                intent.putExtra("name", event.getDescriptions()?.get(index)?.getName().toString())
+                intent.putExtra("description", event.getDescriptions()?.get(index)?.getDescription().toString())
+                intent.putExtra("type", event.getDescriptions()?.get(index)?.getType().toString())
+                intent.putExtra("foreign_id", event.getDescriptions()?.get(index)?.getForeignId().toString())
+                intent.putExtra("country", event.getAddress()?.get(index)?.getCountry())
+                intent.putExtra("city", event.getAddress()?.get(index)?.getCity().toString())
+                intent.putExtra("street", event.getAddress()?.get(index)?.getStreet().toString())
+                intent.putExtra("zip_code", event.getAddress()?.get(index)?.getZipCode().toString())
+                intent.putExtra("nb_house", event.getAddress()?.get(index)?.getNbHouse().toString())
+                intent.putExtra("complement", event.getAddress()?.get(index)?.getComplement().toString())
                 intent.putExtra("date_start", event.getDateStart().toString())
                 intent.putExtra("date_end", event.getDateEnd().toString())
                 intent.putExtra("experience", event.getExperience().toString())

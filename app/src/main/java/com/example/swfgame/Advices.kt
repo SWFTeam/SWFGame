@@ -88,14 +88,23 @@ class Advices : AppCompatActivity() {
 
             private fun onClickItem(view: View, advice: Advice){
 
+                var index: Int = 0
+
+                for(i in 0..advice.getDescriptions()?.size!!){
+                    if(advice.getDescriptions()?.get(i)?.getCountryCode().toString() == "GB"){
+                        index = i
+                        break
+                    }
+                }
+
                 var intent = Intent(applicationContext, AdviceDetails::class.java)
-                intent.putExtra("id", advice.getDescriptions()?.get(0)?.getId())
-                intent.putExtra("country_code", advice.getDescriptions()?.get(0)?.getCountryCode())
-                intent.putExtra("title", advice.getDescriptions()?.get(0)?.getTitle())
-                intent.putExtra("name", advice.getDescriptions()?.get(0)?.getName())
-                intent.putExtra("description", advice.getDescriptions()?.get(0)?.getDescription())
-                intent.putExtra("type", advice.getDescriptions()?.get(0)?.getType())
-                intent.putExtra("foreign_id", advice.getDescriptions()?.get(0)?.getForeignId())
+                intent.putExtra("id", advice.getDescriptions()?.get(index)?.getId())
+                intent.putExtra("country_code", advice.getDescriptions()?.get(index)?.getCountryCode())
+                intent.putExtra("title", advice.getDescriptions()?.get(index)?.getTitle())
+                intent.putExtra("name", advice.getDescriptions()?.get(index)?.getName())
+                intent.putExtra("description", advice.getDescriptions()?.get(index)?.getDescription())
+                intent.putExtra("type", advice.getDescriptions()?.get(index)?.getType())
+                intent.putExtra("foreign_id", advice.getDescriptions()?.get(index)?.getForeignId())
                 intent.putExtra("token", token)
                 intent.putExtra("email", email)
                 startActivity(intent)

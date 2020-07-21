@@ -27,11 +27,21 @@ class MyRecyclerAdapter3(private val dataset: ArrayList<Event>, private val onCl
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.itemView.title_event.text = this.dataset[position].getDescriptions()?.get(0)?.getTitle().toString()
-        if(this.dataset[position].getDescriptions()?.get(0)?.getDescription().toString().length <= 40){
-            holder.itemView.descriptionEvent_textView.text = this.dataset[position].getDescriptions()?.get(0)?.getDescription().toString()
+
+        var index: Int = 0
+
+        for(i in 0..this.dataset[position].getDescriptions()?.size!!){
+            if(this.dataset[position].getDescriptions()?.get(i)?.getCountryCode().toString() == "GB"){
+                index = i
+                break
+            }
+        }
+
+        holder.itemView.title_event.text = this.dataset[position].getDescriptions()?.get(index)?.getTitle().toString()
+        if(this.dataset[position].getDescriptions()?.get(index)?.getDescription().toString().length <= 40){
+            holder.itemView.descriptionEvent_textView.text = this.dataset[position].getDescriptions()?.get(index)?.getDescription().toString()
         } else {
-            var text: String = this.dataset[position].getDescriptions()?.get(0)?.getDescription().toString().subSequence(0, 40).toString() + "..."
+            var text: String = this.dataset[position].getDescriptions()?.get(index)?.getDescription().toString().subSequence(0, 40).toString() + "..."
             holder.itemView.descriptionEvent_textView.text = text
         }
         holder.itemView.setOnClickListener{

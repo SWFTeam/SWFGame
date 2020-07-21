@@ -27,11 +27,21 @@ class MyRecyclerAdapter2(private val dataset: ArrayList<Challenge>, private val 
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.itemView.title_challenge.text = this.dataset[position].getDescription()?.get(0)?.getTitle().toString()
-        if(this.dataset[position].getDescription()?.get(0)?.getDescription().toString().length <= 40){
-            holder.itemView.description_textView.text = this.dataset[position].getDescription()?.get(0)?.getDescription().toString()
+
+        var index: Int = 0
+
+        for(i in 0..this.dataset[position].getDescription()?.size!!){
+            if(this.dataset[position].getDescription()?.get(i)?.getCountryCode().toString() == "GB"){
+                index = i
+                break
+            }
+        }
+
+        holder.itemView.title_challenge.text = this.dataset[position].getDescription()?.get(index)?.getTitle().toString()
+        if(this.dataset[position].getDescription()?.get(index)?.getDescription().toString().length <= 40){
+            holder.itemView.description_textView.text = this.dataset[position].getDescription()?.get(index)?.getDescription().toString()
         } else {
-            var text: String = this.dataset[position].getDescription()?.get(0)?.getDescription().toString().subSequence(0, 40).toString() + "..."
+            var text: String = this.dataset[position].getDescription()?.get(index)?.getDescription().toString().subSequence(0, 40).toString() + "..."
             holder.itemView.description_textView.text = text
         }
         holder.itemView.setOnClickListener{
