@@ -137,7 +137,7 @@ class EventDetails : AppCompatActivity() {
         }
 
         this.experience_textView = findViewById(R.id.experience_textView)
-        this.experience_textView.text = "Cet event vous rapportera " + experience + " points d'experience."
+        this.experience_textView.text = "This event will make you gain " + experience + " experience points."
 
     }
 

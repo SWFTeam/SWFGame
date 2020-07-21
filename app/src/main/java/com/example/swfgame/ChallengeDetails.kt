@@ -107,7 +107,7 @@ class ChallengeDetails : AppCompatActivity() {
         this.description_textView.text = "Description : " + description
 
         this.experience_textView = findViewById(R.id.experience_textView)
-        this.experience_textView.text = "Ce challenge vous rapportera " + experience + " points d'experience."
+        this.experience_textView.text = "This challenge will make you gain " + experience + " experience points."
     }
 
     private fun getCompletedChallenges(){
