@@ -27,6 +27,7 @@
                 android:id="@+id/user_imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:contentDescription="User logo"
                 app:srcCompat="@drawable/user" />
