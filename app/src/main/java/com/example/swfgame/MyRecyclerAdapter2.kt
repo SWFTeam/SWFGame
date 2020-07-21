@@ -28,7 +28,12 @@ class MyRecyclerAdapter2(private val dataset: ArrayList<Challenge>, private val 
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.itemView.title_challenge.text = this.dataset[position].getDescription()?.get(0)?.getTitle().toString()
-        holder.itemView.description_textView.text = this.dataset[position].getDescription()?.get(0)?.getDescription().toString()
+        if(this.dataset[position].getDescription()?.get(0)?.getDescription().toString().length <= 40){
+            holder.itemView.description_textView.text = this.dataset[position].getDescription()?.get(0)?.getDescription().toString()
+        } else {
+            var text: String = this.dataset[position].getDescription()?.get(0)?.getDescription().toString().subSequence(0, 40).toString() + "..."
+            holder.itemView.description_textView.text = text
+        }
         holder.itemView.setOnClickListener{
             if (onClickListener != null) {
                 onClickListener.invoke(it, dataset[position])
